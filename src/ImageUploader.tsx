@@ -4,14 +4,19 @@ import { ImageCropUploaderProps } from './interface';
 import { Cropper } from './Cropper';
 
 export default function ImageUploader(props: ImageCropUploaderProps) {
-  const { 
-    action='/', 
+  const {
+    accept = "image/*",
+    action = '/',
     shape = 'rect',
     aspect = 1,
     rotate = false,
     fixAspect = false,
     rotateRatio = 1,
     quality = 1,
+    modalTitle = "裁剪图片",
+    modalWidth = 520,
+    modalOk = "确定",
+    modalCancel = "取消",
     cropperProps,
     modalProps
   } = props;
@@ -31,7 +36,7 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
   return (
     <div>
       <Upload
-        accept="image/*"
+        accept={accept}
         listType="picture-card"
         action={action}
         onPreview={file => {
@@ -47,7 +52,7 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
           return new Promise(async (resolve) => {
             let img = await readFile(file)
             const modal = Modal.confirm({
-              title: '裁剪图片',
+              title: modalTitle,
               onCancel: () => {
                 Message.info('取消上传');
                 resolve(false);
@@ -57,6 +62,8 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
               simple: false,
               content: (
                 <Cropper
+                  modalCancel={modalCancel}
+                  modalOk={modalOk}
                   fixAspect={fixAspect}
                   imgType={file.type}
                   quality={quality}
@@ -80,6 +87,7 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
                 />
               ),
               footer: null,
+              style: { width: modalWidth },
               ...modalProps,
             });
           });

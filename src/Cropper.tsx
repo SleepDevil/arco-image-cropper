@@ -7,14 +7,14 @@ import './style/index.less'
 import "./style/index.css"
 
 interface CropperProps extends Required<
-    Pick<ImageCropUploaderProps, 'onModalOk' | 'onModalCancel' | 'shape' | 'aspect' | 'fixAspect' | 'rotateRatio' | 'cropperProps' | 'rotate' | 'quality'>
+    Pick<ImageCropUploaderProps, 'onModalOk' | 'onModalCancel' | 'shape' | 'aspect' | 'fixAspect' | 'rotateRatio' | 'cropperProps' | 'rotate' | 'quality' | 'modalCancel' | 'modalOk'>
 > {
     image: string;
     imgType: string;
 }
 
 const Cropper = (props: CropperProps) => {
-    const { image, shape, aspect, imgType, fixAspect, rotate, rotateRatio, cropperProps, quality } = props;
+    const { image, shape, aspect, imgType, fixAspect, rotate, rotateRatio, cropperProps, quality, modalCancel, modalOk } = props;
     let CropperInstance = useRef<Cropper>(null);
     const [rotation, setRotation] = useState(0);
     const cropperRef = useRef<HTMLImageElement>(null);
@@ -79,7 +79,7 @@ const Cropper = (props: CropperProps) => {
                     className="mr-8"
                     onClick={props.onModalCancel}
                 >
-                    取消
+                    {modalCancel}
                 </Button>
                 <Button
                     type="primary"
@@ -87,7 +87,7 @@ const Cropper = (props: CropperProps) => {
                         props.onModalOk(CropperInstance.current.getCroppedCanvas().toDataURL(imgType, quality))
                     }}
                 >
-                    确定
+                    {modalOk}
                 </Button>
             </Grid.Row>
         </div>
