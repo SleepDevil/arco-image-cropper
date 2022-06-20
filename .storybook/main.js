@@ -37,6 +37,22 @@ module.exports = {
                 pathComponents :
                 pathSrc;
         });
+        // 支持 tailwind css
+        config.module.rules.push({
+            test: '/\.css$/',
+            use: [{
+                loader: 'postcss-loader',
+                options: {
+                    postcssOptions: {
+                        plugins: [
+                            require('tailwindcss'),
+                            require('autoprefixer'),
+                        ],
+                    },
+                },
+            }, ],
+            include: path.resolve(__dirname, '../'),
+        });
 
         // 支持 import less
         config.module.rules.push({

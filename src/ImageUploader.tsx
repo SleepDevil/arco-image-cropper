@@ -2,6 +2,7 @@ import { Upload, Message, Modal } from '@arco-design/web-react';
 import React from 'react';
 import { ImageCropUploaderProps } from './interface';
 import { Cropper } from './Cropper';
+import "./style/index.css"
 
 export default function ImageUploader(props: ImageCropUploaderProps) {
   const {

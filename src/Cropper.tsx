@@ -3,7 +3,7 @@ import { IconRotateLeft, IconRotateRight } from "@arco-design/web-react/icon";
 import React, { useEffect, useRef, useState } from "react";
 import { ImageCropUploaderProps } from "./interface";
 import ReactCropper from "react-cropper";
-import './style/index.less'
+import "cropperjs/dist/cropper.css";
 import "./style/index.css"
 
 interface CropperProps extends Required<
