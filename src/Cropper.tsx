@@ -74,7 +74,7 @@ const Cropper = (props: CropperProps) => {
                 </Grid.Row>
             </Grid.Row>}
 
-            <Grid.Row className="mt-4" justify="end">
+            <Grid.Row className="mt-8" justify="end">
                 <Button
                     className="mr-8"
                     onClick={props.onModalCancel}
