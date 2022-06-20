@@ -3,8 +3,7 @@ import { IconRotateLeft, IconRotateRight } from "@arco-design/web-react/icon";
 import React, { useEffect, useRef, useState } from "react";
 import { ImageCropUploaderProps } from "./interface";
 import ReactCropper from "react-cropper";
-import "cropperjs/dist/cropper.css";
-
+import './style/index.less'
 
 
 interface CropperProps extends Required<
@@ -83,7 +82,7 @@ const Cropper = (props: CropperProps) => {
                 </Button>
                 <Button
                     type="primary"
-                    onClick={async () => {
+                    onClick={() => {
                         props.onModalOk(CropperInstance.current.getCroppedCanvas().toDataURL(imgType, quality))
                     }}
                 >

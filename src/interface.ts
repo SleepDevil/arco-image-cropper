@@ -5,6 +5,7 @@ import { ConfirmProps } from "@arco-design/web-react/es/Modal/confirm";
  * @title ImageCropUploader
  */
 export interface ImageCropUploaderProps {
+  action: string;
   /**
    * @zh 宽度与高度的比例
    * @en Aspect of crop area , width / height
@@ -28,7 +29,7 @@ export interface ImageCropUploaderProps {
    * @defaultValue 1
    */
   quality?: number;
-  
+
   fillColor?: string;
 
   zoomOnWheel?: boolean; // 滚轴滚动缩放图片

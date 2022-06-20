@@ -4,7 +4,9 @@ import { ImageCropUploaderProps } from './interface';
 import { Cropper } from './Cropper';
 
 export default function ImageUploader(props: ImageCropUploaderProps) {
-  const { shape = 'rect',
+  const { 
+    action='/', 
+    shape = 'rect',
     aspect = 1,
     rotate = false,
     fixAspect = false,
@@ -31,12 +33,13 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
       <Upload
         accept="image/*"
         listType="picture-card"
-        action="/"
+        action={action}
         onPreview={file => {
+          console.log(file, 'previewFile')
           Modal.info({
             title: '预览',
-            content: <div style={{ textAlign: 'center' }}>
-              <img style={{ maxWidth: '100%' }} src={file.url || URL.createObjectURL(file.originFile)} />
+            content: <div className='imagePreviewModalContent'>
+              <img src={file.url || URL.createObjectURL(file.originFile)} />
             </div>
           })
         }}
