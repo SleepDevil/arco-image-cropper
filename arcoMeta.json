@@ -1,0 +1,24 @@
+{
+  "name": "@arco-materials/upload-crop",
+  "title": "图片上传裁剪",
+  "description": "收集裁剪过的图片",
+  "type": "react-component",
+  "category": [
+    "数据展示"
+  ],
+  "group": 0,
+  "homepage": "",
+  "repository": "",
+  "author": "SleepDevil",
+  "screenshot": "",
+  "package": {
+    "name": "@arco-materials/upload-crop",
+    "version": "latest",
+    "type": "npm",
+    "registry": "",
+    "peerDependencies": [
+      "react",
+      "react-dom"
+    ]
+  }
+}
