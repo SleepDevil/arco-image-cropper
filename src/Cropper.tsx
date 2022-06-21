@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { ImageCropUploaderProps } from "./interface";
 import ReactCropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
-import "./style/index.css"
 
 interface CropperProps extends Required<
     Pick<ImageCropUploaderProps, 'onModalOk' | 'onModalCancel' | 'shape' | 'aspect' | 'fixAspect' | 'rotateRatio' | 'cropperProps' | 'rotate' | 'quality' | 'modalCancel' | 'modalOk'>
