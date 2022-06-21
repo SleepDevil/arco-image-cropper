@@ -1,10 +1,11 @@
 import Cropper from "cropperjs";
 import { ConfirmProps } from "@arco-design/web-react/es/Modal/confirm";
+import { UploaderProps } from "@arco-design/web-react/es/Upload/interface";
 
 /**
  * @title ImageCropUploader
  */
-export interface ImageCropUploaderProps {
+export interface ImageCropUploaderProps extends UploaderProps {
   /**
    * @zh 上传服务器接口地址
    * @en Uploading url
@@ -102,13 +103,13 @@ export interface ImageCropUploaderProps {
   /**
      * @zh 裁剪组件额外属性
      * @en additional props of crop component
-     * @defaultValue see also [cropperjs]("https://github.com/fengyuanchen/cropperjs#options")
+     * @defaultValue see also [cropperjs](https://github.com/fengyuanchen/cropperjs#options)
      */
   cropperProps?: Partial<Cropper.Options>;
   /**
      * @zh 对话框额外属性
      * @en additional props of modal component
-     * @defaultValue see also [modal]("https://arco.design/react/components/modal#api")
+     * @defaultValue see also [modal](https://arco.design/react/components/modal#api)
      */
   modalProps?: Partial<Omit<ConfirmProps, 'content'>>
 }
