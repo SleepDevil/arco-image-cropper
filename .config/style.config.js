@@ -17,10 +17,10 @@ module.exports = (config) => {
 
     const postcssPlugins = [
         autoprefixer({ browsers: ['last 1 version'] }),
-        tailwindcss,
+        tailwindcss(),
     ];
 
-    config.hook.beforeCompile = postcss.bind(null, postcssPlugins);
+    config.hook.afterCompile = postcss.bind(null, postcssPlugins);
 
     const { umd } = require(path.resolve('package.json'));
     if (umd && umd.style) {
