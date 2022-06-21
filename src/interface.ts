@@ -98,8 +98,8 @@ export interface ImageCropUploaderProps extends UploaderProps {
      */
   onModalCancel?: () => void;
 
-  beforeCrop?: (file: File, fileList: File[]) => boolean | Promise<boolean>;
-  onUploadFail?: (err: Error) => void;
+//   beforeCrop?: (file: File, fileList: File[]) => boolean | Promise<boolean>;
+//   onUploadFail?: (err: Error) => void;
   /**
      * @zh 裁剪组件额外属性
      * @en additional props of crop component

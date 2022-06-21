@@ -6,14 +6,14 @@ import ReactCropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 
 interface CropperProps extends Required<
-    Pick<ImageCropUploaderProps, 'onModalOk' | 'onModalCancel' | 'shape' | 'aspect' | 'fixAspect' | 'rotateRatio' | 'cropperProps' | 'rotate' | 'quality' | 'modalCancel' | 'modalOk'>
+    Pick<ImageCropUploaderProps, 'onModalOk' | 'onModalCancel' | 'shape' | 'aspect' | 'fixAspect' | 'rotateRatio' | 'cropperProps' | 'rotate' | 'quality' | 'modalCancel' | 'modalOk' | 'zoomOnWheel'>
 > {
     image: string;
     imgType: string;
 }
 
 const Cropper = (props: CropperProps) => {
-    const { image, shape, aspect, imgType, fixAspect, rotate, rotateRatio, cropperProps, quality, modalCancel, modalOk } = props;
+    const { image, shape, aspect, imgType, fixAspect, rotate, rotateRatio, cropperProps, quality, modalCancel, modalOk, zoomOnWheel } = props;
     let CropperInstance = useRef<Cropper>(null);
     const [rotation, setRotation] = useState(0);
     const cropperRef = useRef<HTMLImageElement>(null);
@@ -49,6 +49,7 @@ const Cropper = (props: CropperProps) => {
                     ready={() => {
                         CropperInstance.current = (cropperRef.current as any).cropper
                     }}
+                    zoomOnWheel={zoomOnWheel}
                     {...cropperProps}
                 />
             </div>
@@ -95,7 +96,7 @@ const Cropper = (props: CropperProps) => {
                         const fileBlob = dataURItoBlob(CropperInstance.current.getCroppedCanvas().toDataURL(imgType, quality))
                         const croppedFile = new File([fileBlob], 'croppedimage', {
                             type: imgType || 'image/*',
-                          });
+                        });
                         props.onModalOk(croppedFile)
                     }}
                 >

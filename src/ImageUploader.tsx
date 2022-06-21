@@ -13,13 +13,18 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
     rotate = false,
     fixAspect = false,
     rotateRatio = 1,
+    wheelZoomRatio=0.1,
     quality = 1,
     modalTitle = "裁剪图片",
     modalWidth = 520,
     modalOk = "确定",
     modalCancel = "取消",
+    zoomOnWheel=true,
+    onModalCancel,
+    onModalOk,
     cropperProps,
-    modalProps
+    modalProps,
+    ...rest
   } = props;
 
   const readFile = (file): Promise<string> => {
@@ -67,6 +72,7 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
                   fixAspect={fixAspect}
                   imgType={file.type}
                   quality={quality}
+                  zoomOnWheel={zoomOnWheel}
                   image={img}
                   onModalOk={(croppedFile) => {
                     resolve(croppedFile);
@@ -92,6 +98,7 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
             });
           });
         }}
+        {...rest}
       />
     </div>
   );
