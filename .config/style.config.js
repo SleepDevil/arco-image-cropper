@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { getGitRootPath } = require('arco-cli-dev-utils');
 const postcss = require('gulp-postcss');
-const tailwindcss = require('autoprefixer');
+const tailwindcss = require('tailwindcss');
 
 /**
  * @param config {import('arco-scripts').StyleConfig}

@@ -60,6 +60,7 @@
         "eslint-plugin-typescript": "^0.14.0",
         "fs-extra": "^9.0.1",
         "glob": "^7.1.6",
+        "gulp-postcss": "^9.0.1",
         "husky": "^4.3.6",
         "jsdom": "^16.4.0",
         "jsdom-global": "^3.0.2",
