@@ -90,7 +90,7 @@ export interface ImageCropUploaderProps {
      * @zh 点击确定后自定义回调函数
      * @en callback after click ok
      */
-  onModalOk?: (file: string | Blob | File) => void;
+  onModalOk?: (file: File) => void;
   /**
      * @zh 点击取消后自定义回调函数
      * @en callback after click cancel

@@ -27,6 +27,15 @@ const Cropper = (props: CropperProps) => {
         }
     }, [image])
 
+    const dataURItoBlob = (dataURI) => {
+        var binary = atob(dataURI.split(',')[1]);
+        var array = [];
+        for (var i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
+        }
+        return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+    }
+
     return (
         <div>
             <div className="h-[280px] relative">
@@ -83,7 +92,11 @@ const Cropper = (props: CropperProps) => {
                 <Button
                     type="primary"
                     onClick={() => {
-                        props.onModalOk(CropperInstance.current.getCroppedCanvas().toDataURL(imgType, quality))
+                        const fileBlob = dataURItoBlob(CropperInstance.current.getCroppedCanvas().toDataURL(imgType, quality))
+                        const croppedFile = new File([fileBlob], 'croppedimage', {
+                            type: imgType || 'image/*',
+                          });
+                        props.onModalOk(croppedFile)
                     }}
                 >
                     {modalOk}

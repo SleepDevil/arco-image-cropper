@@ -41,7 +41,6 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
         listType="picture-card"
         action={action}
         onPreview={file => {
-          console.log(file, 'previewFile')
           Modal.info({
             title: '预览',
             content: <div className='text-center'>
