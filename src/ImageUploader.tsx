@@ -2,26 +2,23 @@ import { Upload, Message, Modal } from '@arco-design/web-react';
 import React from 'react';
 import { ImageCropUploaderProps } from './interface';
 import { Cropper } from './Cropper';
-import "./style/index.less"
+import './style/index.less';
 
-export default function ImageUploader(props: ImageCropUploaderProps) {
+export default function ImageUploader(props: ImageCropUploaderProps): React.ReactNode {
   const {
-    accept = "image/*",
+    accept = 'image/*',
     action = '/',
     shape = 'rect',
     aspect = 1,
     rotate = false,
     fixAspect = false,
     rotateRatio = 1,
-    wheelZoomRatio=0.1,
     quality = 1,
-    modalTitle = "裁剪图片",
+    modalTitle = '裁剪图片',
     modalWidth = 520,
-    modalOk = "确定",
-    modalCancel = "取消",
-    zoomOnWheel=true,
-    onModalCancel,
-    onModalOk,
+    modalOk = '确定',
+    modalCancel = '取消',
+    zoomOnWheel = true,
     cropperProps,
     modalProps,
     ...rest
@@ -29,15 +26,19 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
 
   const readFile = (file): Promise<string> => {
     return new Promise((resolve) => {
-      const reader = new FileReader()
-      reader.addEventListener('load', () => {
-        if (typeof reader.result === 'string') {
-          resolve(reader.result)
-        }
-      }, false)
-      reader.readAsDataURL(file)
-    })
-  }
+      const reader = new FileReader();
+      reader.addEventListener(
+        'load',
+        () => {
+          if (typeof reader.result === 'string') {
+            resolve(reader.result);
+          }
+        },
+        false
+      );
+      reader.readAsDataURL(file);
+    });
+  };
 
   return (
     <div>
@@ -45,24 +46,26 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
         accept={accept}
         listType="picture-card"
         action={action}
-        onPreview={file => {
+        onPreview={(file) => {
           Modal.info({
             title: '预览',
-            content: <div className='text-center'>
-              <img src={file.url || URL.createObjectURL(file.originFile)} />
-            </div>
-          })
+            content: (
+              <div className="text-center">
+                <img src={file.url || URL.createObjectURL(file.originFile)} />
+              </div>
+            ),
+          });
         }}
         beforeUpload={(file) => {
           return new Promise(async (resolve) => {
-            let img = await readFile(file)
+            const img = await readFile(file);
             const modal = Modal.confirm({
               title: modalTitle,
               onCancel: () => {
                 Message.info('取消上传');
                 resolve(false);
                 modal.close();
-                props?.onModalCancel?.()
+                props?.onModalCancel?.();
               },
               simple: false,
               content: (
@@ -77,13 +80,13 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
                   onModalOk={(croppedFile) => {
                     resolve(croppedFile);
                     modal.close();
-                    props?.onModalOk?.(croppedFile)
+                    props?.onModalOk?.(croppedFile);
                   }}
                   onModalCancel={() => {
                     Message.info('取消上传');
                     resolve(false);
                     modal.close();
-                    props?.onModalCancel?.()
+                    props?.onModalCancel?.();
                   }}
                   aspect={aspect}
                   shape={shape}
@@ -99,7 +102,9 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
           });
         }}
         {...rest}
-      />
+      >
+        {props.children}
+      </Upload>
     </div>
   );
 }
