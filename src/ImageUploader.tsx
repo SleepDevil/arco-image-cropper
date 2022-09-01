@@ -4,7 +4,7 @@ import { ImageCropUploaderProps } from './interface';
 import { Cropper } from './Cropper';
 import './style/index.less';
 
-export default function ImageUploader(props: ImageCropUploaderProps): React.ReactNode {
+export default function ImageUploader(props: ImageCropUploaderProps) {
   const {
     accept = 'image/*',
     action = '/',
