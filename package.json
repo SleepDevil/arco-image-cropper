@@ -1,6 +1,6 @@
 {
     "name": "@arco-materials/upload-crop",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "description": "收集裁剪过的图片",
     "main": "./lib/index.js",
     "module": "./es/index.js",
