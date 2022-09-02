@@ -7,7 +7,6 @@ import './style/index.less';
 export default function ImageUploader(props: ImageCropUploaderProps) {
   const {
     accept = 'image/*',
-    action = '/',
     shape = 'rect',
     aspect = 1,
     rotate = false,
@@ -45,7 +44,6 @@ export default function ImageUploader(props: ImageCropUploaderProps) {
       <Upload
         accept={accept}
         listType="picture-card"
-        action={action}
         onPreview={(file) => {
           Modal.info({
             title: '预览',

@@ -11,7 +11,7 @@ export interface ImageCropUploaderProps extends UploaderProps {
    * @zh 上传服务器接口地址
    * @en Uploading url
    */
-  action: string;
+  action?: string;
   /**
    * @zh 宽度与高度的比例
    * @en Aspect of crop area , width / height
